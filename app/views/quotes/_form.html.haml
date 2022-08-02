@@ -1,0 +1,6 @@
+= simple_form_for quote, html: { class: "quote form" } do |f|
+  - if quote.errors.any?
+    .error-message
+      = quote.errors.full_messages.to_sentence.capitalize
+  = f.input :name, input_html: { autofocus: true }
+  = f.submit class: "btn btn--secondary"

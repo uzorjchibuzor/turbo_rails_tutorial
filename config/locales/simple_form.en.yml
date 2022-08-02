@@ -1,0 +1,14 @@
+en:
+  simple_form:
+    placeholder:
+      quote:
+        name: "Name of your quote"
+    label:
+      quote:
+        name: "Name"
+  
+  helpers:
+    submit:
+      quote:
+        create: "Create quote"
+        update: "Update quote"
