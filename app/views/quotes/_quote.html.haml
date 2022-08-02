@@ -1,5 +1,6 @@
-.quote 
-  = link_to quote.name, quote_path(quote)
-  .quote__actions
-    = button_to "Delete", quote_path(quote), method: :delete, class: "btn btn--danger"
-    = link_to "Edit", edit_quote_path(quote), class: "btn btn--light"
+= turbo_frame_tag quote do
+  .quote 
+    = link_to quote.name, quote_path(quote), data: { turbo_frame: "_top" }
+    .quote__actions
+      = button_to "Delete", quote_path(quote), method: :delete, class: "btn btn--danger"
+      = link_to "Edit", edit_quote_path(quote), class: "btn btn--light"
