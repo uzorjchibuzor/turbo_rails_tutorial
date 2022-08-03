@@ -3,3 +3,6 @@
   .header
     %h1
       = @quote.name
+    = link_to "New date", new_quote_line_item_date_path(@quote), class: "btn btn--primary"
+
+  = render @line_item_dates, quote: @quote

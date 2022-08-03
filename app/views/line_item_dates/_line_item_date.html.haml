@@ -1,0 +1,7 @@
+.line-item-date
+  .line-item-date__header
+    %h2.line-item-date__title
+      = l(line_item_date.date, format: :long)
+    .line-item-date__actions
+      = button_to "Delete", [quote, line_item_date], method: :delete, class: "btn btn--light"
+      = link_to "Edit", [:edit, quote, line_item_date], class: "btn btn--light"        
