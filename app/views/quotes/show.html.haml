@@ -3,6 +3,9 @@
   .header
     %h1
       = @quote.name
-    = link_to "New date", new_quote_line_item_date_path(@quote), class: "btn btn--primary"
+    = link_to "New date", new_quote_line_item_date_path(@quote), class: "btn btn--primary", data: { turbo_frame: dom_id(LineItemDate.new)}
+    
+  = turbo_frame_tag LineItemDate.new
 
-  = render @line_item_dates, quote: @quote
+  = turbo_frame_tag "line_item_dates" do
+    = render @line_item_dates, quote: @quote
