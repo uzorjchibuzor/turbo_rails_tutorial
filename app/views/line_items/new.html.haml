@@ -1,0 +1,8 @@
+%main.container
+  = link_to sanitize("&larr; Back to quote"), quotes_path(@quote)
+
+  .header
+    %h1 
+      New item for #{l(@line_item_date.date, format: :long)}
+    = turbo_frame_tag nested_dom_id(@line_item_date, LineItem.new) do
+      = render "form", quote: @quote, line_item_date: @line_item_date, line_item: @line_item

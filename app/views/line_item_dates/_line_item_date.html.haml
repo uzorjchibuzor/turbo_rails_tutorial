@@ -1,8 +1,24 @@
 = turbo_frame_tag line_item_date do
   .line-item-date
-    .line-item-date__header
-      %h2.line-item-date__title
-        = l(line_item_date.date, format: :long)
-      .line-item-date__actions
-        = button_to "Delete", [quote, line_item_date], method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } ,class: "btn btn--light"
-        = link_to "Edit", [:edit, quote, line_item_date], class: "btn btn--light"        
+    = turbo_frame_tag dom_id(line_item_date, :edit) do
+      .line-item-date__header
+        %h2.line-item-date__title
+          = l(line_item_date.date, format: :long)
+        .line-item-date__actions
+          = button_to "Delete", [quote, line_item_date], method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } ,class: "btn btn--light"
+          = link_to "Edit", [:edit, quote, line_item_date], class: "btn btn--light"
+
+    .line-item-date__body
+      .line-item.line-item--header
+        .line-item__name Article     
+        .line-item__quantity Quantity
+        .line-item__price Price
+        .line-item__actions
+      
+      = turbo_frame_tag nested_dom_id(line_item_date, "line_items") do 
+        = render line_item_date.line_items, quote: @quote, line_item_date: line_item_date
+
+      = turbo_frame_tag nested_dom_id(line_item_date, LineItem.new)
+
+      .line-item-date__footer
+        = link_to "Add item", [:new, quote, line_item_date, :line_item], data: { turbo_frame: nested_dom_id(line_item_date, LineItem.new) }, class: "btn btn--primary"
