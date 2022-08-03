@@ -1,6 +1,7 @@
 class Quote < ApplicationRecord
   validates :name, presence: true
   belongs_to :company
+  has_many :line_item_dates, dependent: :destroy
 
   scope :ordered, -> { order(id: :desc) }
   # after_create_commit -> { broadcast_prepend_later_to "quotes" }
